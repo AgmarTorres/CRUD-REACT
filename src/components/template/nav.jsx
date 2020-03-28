@@ -1,8 +1,19 @@
-import React from 'react'
+import React from "react";
 
-import './nav.css'
+import "./nav.css";
 
-export default props =>
-    <aside className = "menu-area">
-        Navegaçao
-    </aside>
+export default props => (
+  <aside className="menu-area">
+    <nav className="menu">
+      <a href="#">
+        <i className="fa fa-home"></i> Início
+      </a>
+      <a href="#/users">
+        <i className="fa fa-users"></i> Início
+      </a>
+      <a href="#/usuarios">
+        <i className="fa fa-home"></i> Usuários
+      </a>
+    </nav>
+  </aside>
+);
