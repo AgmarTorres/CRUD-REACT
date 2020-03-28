@@ -6,14 +6,14 @@ import "./App.css";
 import Logo from "../components/template/logo";
 
 import Nav from "../components/template/nav";
-import Main from "../components/template/main";
+import Home from "../components/home/Home";
 import Footer from "../components/template/footer";
 
 export default props => (
   <div className="app">
     <Logo></Logo>
     <Nav />
-    <Main icon="home" title="Início" subtitle="Aplicação React" />
+    <Home />
     <Footer />
   </div>
 );
