@@ -39,7 +39,64 @@ export default class UserCrud extends React.Component {
     return list;
   }
 
+  updateField(event) {
+    const user = { ...this.state.user };
+    user[event.target.name] = event.target.value;
+    this.setState({ user });
+  }
+
+  renderForm() {
+    return (
+      <div className="form">
+        <div className="row">
+          <div className="col-12 col-md-6">
+            <label>Nome:</label>
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              value={this.state.user.name}
+              onChange={e => this.updateField(e)}
+              placeholder="Digite o nome..."
+            />
+            <label>E-mail:</label>
+            <input
+              type="email"
+              className="form-control"
+              name="email"
+              value={this.state.user.email}
+              onChange={e => this.updateField(e)}
+              placeholder="Digite o email..."
+            />
+            <hr />
+
+            <div className="row">
+              <div className="col-12 d-flex justify-content-end">
+                <button className="btn btn-primary" onClick={e => this.save(e)}>
+                  Salvar
+                </button>
+                <button
+                  className="btn btn-secondary ml-2"
+                  onClick={e => this.clear(e)}
+                >
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  renderTable() {}
+
+  renderRow() {}
+
   render() {
-    return <Main {...headerProps}>Cadastro de Usuário</Main>;
+    return <Main {...headerProps}>Cadastro de Usuário
+        {this.renderForm()}
+    
+    </Main>;
   }
 }
