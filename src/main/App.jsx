@@ -4,9 +4,9 @@ import './App.css'
 
 import Logo from '../components/template/logo'
 
-import Nav from '../components/template/main'
+import Nav from '../components/template/nav'
 import Main from '../components/template/main'
-import Footer from '../components/template/main'
+import Footer from '../components/template/footer'
 
 
 export default props =>

@@ -7,8 +7,6 @@ import Header from "./header";
 export default props => (
   <React.Fragment>
     <Header />
-    <main>
-        
-    </main>
+    <main className="content">Conteúdo</main>
   </React.Fragment>
 );
