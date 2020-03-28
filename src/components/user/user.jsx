@@ -19,6 +19,14 @@ const initialState = {
 export default class UserCrud extends React.Component {
   state = initialState;
 
+  componentDidMount() {
+    axios(baseUrl).then(resp => {
+      this.setState({
+        list: resp.data
+      });
+    });
+  }
+
   clear() {
     this.setState({ user: initialState });
   }
@@ -33,9 +41,9 @@ export default class UserCrud extends React.Component {
     });
   }
 
-  getUpdateList(user) {
+  getUpdateList(user, add = true) {
     const list = this.state.list.filter(u => u.id !== user.id);
-    list.unshift(user);
+    if(add) list.unshift(user);
     return list;
   }
 
@@ -89,14 +97,62 @@ export default class UserCrud extends React.Component {
     );
   }
 
-  renderTable() {}
+  renderTable() {
+    return (
+      <table className="table mt-4">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>{this.renderRows()}</tbody>
+      </table>
+    );
+  }
 
-  renderRow() {}
+  renderRows() {
+    return this.state.list.map(user => {
+      return (
+        <tr key={user.id}>
+          <td>{user.name}</td>
+          <td>{user.email}</td>
+          <td>
+            <button className="btn btn-warning" onClick={() => this.load(user)}>
+              <i className="fa fa-pencil"></i>
+            </button>
+            <button
+              className="btn btn-danger ml-t"
+              onClick={() => this.remove(user)}
+            >
+              <i className="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      );
+    });
+  }
+
+  load(user) {
+    this.setState({ user });
+  }
+
+  remove(user) {
+    axios.delete(`${baseUrl}/${user.id}`).then(resp => {
+      const list = this.getUpdateList(user, false);
+      this.setState({ list });
+    });
+    this.renderRows()
+  }
 
   render() {
-    return <Main {...headerProps}>Cadastro de Usuário
+    return (
+      <Main {...headerProps}>
+        Cadastro de Usuário
         {this.renderForm()}
-    
-    </Main>;
+        {this.renderTable()}
+      </Main>
+    );
   }
 }
