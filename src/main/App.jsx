@@ -6,14 +6,18 @@ import "./App.css";
 import Logo from "../components/template/logo";
 
 import Nav from "../components/template/nav";
-import Home from "../components/home/Home";
 import Footer from "../components/template/footer";
+import Routes from "./Routes";
+
+import { HashRouter } from "react-router-dom";
 
 export default props => (
-  <div className="app">
-    <Logo></Logo>
-    <Nav />
-    <Home />
-    <Footer />
-  </div>
+  <HashRouter>
+    <div className="app">
+      <Logo></Logo>
+      <Nav />
+      <Routes />
+      <Footer />
+    </div>
+  </HashRouter>
 );

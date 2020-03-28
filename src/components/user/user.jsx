@@ -8,23 +8,13 @@ const headerProps = {
   subtitle: "Cadastro de usuários: Incluir, Listar, Alterar e Excluir"
 };
 
-export default class UserCrud extends Component {
+export default class UserCrud extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    constructor(props){
-        super(props)
-        this.state={}
-
-    }
-    
-    ComponentWillMount(){
-
-    }   
-    
-    render(){
-        return(
-            <Main { ...headerProps}>
-                Cadastro de Usuário
-            </Main>
-        )
-    }
+  render() {
+    return <Main {...headerProps}>Cadastro de Usuário</Main>;
+  }
 }
