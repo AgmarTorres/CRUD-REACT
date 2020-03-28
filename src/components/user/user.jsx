@@ -80,11 +80,12 @@ export default class UserCrud extends React.Component {
 
             <div className="row">
               <div className="col-12 d-flex justify-content-end">
-                <button className="btn btn-primary" onClick={e => this.save(e)}>
+                <button className="btn btn-primary " onClick={e => this.save(e)}>
                   Salvar
                 </button>
+                &nbsp;
                 <button
-                  className="btn btn-secondary ml-2"
+                  className="ml-5 btn btn-secondary "
                   onClick={e => this.clear(e)}
                 >
                   Cancelar
